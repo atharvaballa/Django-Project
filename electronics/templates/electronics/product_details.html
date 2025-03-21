@@ -12,7 +12,7 @@
             background-color: #f9f9f9;
             color: #333;
         }
-
+a
         /* Heading styling */
         h1 {
             color: #2c3e50;
@@ -127,13 +127,15 @@
         <div class="product-name">{{ pro.name }}</div>
         <div class="product-price">₹{{ pro.price }}</div>
         <div class="product-description">{{ pro.description }}</div>
+        <div><a href = "{% url 'update_product' pro.id %}"><button>Update</button></a></div>
+        <div><a href = "{% url 'delete_product' pro.id %}"><button>Delete</button></a></div>
     </div>
     {% endfor %}
 </div>
 
 <!-- Form Container -->
 <div class="form-container">
-    <form method="POST">
+    <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="form-group">
             <label for="name">Name:</label>
@@ -147,7 +149,7 @@
             <label for="description">Description:</label>
             <textarea id="description" name="description" required></textarea>
         </div>
-        <button type="submit" class="form-submit">Add to Cart</button>
+        <button type="submit" class="form-submit">Add to Product Details</button>
     </form>
 </div>
 
